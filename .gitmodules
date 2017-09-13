@@ -1,0 +1,4 @@
+[submodule "Assets/Submodules/PostProcessing"]
+	path = Assets/Submodules/PostProcessing
+	url = https://github.com/keijiro/PostProcessing
+	branch = v2
