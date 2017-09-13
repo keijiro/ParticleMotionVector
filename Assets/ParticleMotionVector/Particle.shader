@@ -10,20 +10,21 @@
     SubShader
     {
         Tags { "RenderType"="Opaque" }
+
         Pass
         {
             Tags { "LightMode" = "MotionVectors" }
             ZWrite Off
+
             CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            #pragma target 3.0
+            #pragma vertex Vertex
+            #pragma fragment Fragment
             #include "Motion.cginc"
             ENDCG
         }
+
         CGPROGRAM
         #pragma surface surf Standard fullforwardshadows
-        #pragma target 3.0
         #include "Surface.cginc"
         ENDCG
     }
