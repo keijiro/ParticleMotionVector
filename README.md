@@ -49,16 +49,16 @@ module.
 How about transparency?
 -----------------------
 
-I haven't tried transparency with motion vectors because I think it never
-works. Possibly it works if someone tweaks it very carefully. I don't recommend
-but you can try it anyway.
+I haven't tried transparency with motion vectors because I think it works only
+if someone tweaks it very carefully (and I have no time to invest in it). I
+won't recommend it, but you can try it anyway.
 
 License
 -------
 
 Copyright (c) 2017 Unity Technologies
 
-This repository is to be treated as an example content of Unity -- you can use
-the code freely. Also see the [FAQ] about example contents.
+This repository is to be treated as an example content of Unity; you can use
+the code freely in your projects. Also see the [FAQ] about example contents.
 
 [FAQ]: https://unity3d.com/unity/faq#faq-37863
