@@ -1,4 +1,7 @@
-#include "UnityCG.cginc"
+// ParticleMotionVector - Example implementation of motion vector writer for
+// mesh particle systems | https://github.com/keijiro/ParticleMotionVector
+
+#include "Common.cginc"
 
 struct Input
 {

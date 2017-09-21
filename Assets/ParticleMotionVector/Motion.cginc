@@ -1,3 +1,6 @@
+// ParticleMotionVector - Example implementation of motion vector writer for
+// mesh particle systems | https://github.com/keijiro/ParticleMotionVector
+
 #include "Common.cginc"
 
 float4x4 _NonJitteredVP;
@@ -10,7 +13,7 @@ struct Varyings
     float4 transfer1 : TEXCOORD1;
 };
 
-float3 CalculatePreviousPosition(Attributes input)
+float3 CalculatePreviousPosition(CustomAttributes input)
 {
     float dt = unity_DeltaTime.x;
 
@@ -34,7 +37,7 @@ float3 CalculatePreviousPosition(Attributes input)
     return mul(mr0, mul(imr1, input.position.xyz - p1)) + p0;
 }
 
-Varyings Vertex(Attributes input)
+Varyings Vertex(CustomAttributes input)
 {
     float4 vp0 = float4(CalculatePreviousPosition(input), 1);
     float4 vp1 = input.position;

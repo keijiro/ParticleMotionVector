@@ -1,3 +1,6 @@
+// ParticleMotionVector - Example implementation of motion vector writer for
+// mesh particle systems | https://github.com/keijiro/ParticleMotionVector
+
 Shader "Particles/Standard Opaque with Motion Vectors"
 {
     Properties
@@ -34,5 +37,6 @@ Shader "Particles/Standard Opaque with Motion Vectors"
         #include "Surface.cginc"
         ENDCG
     }
+
     FallBack "Diffuse"
 }
