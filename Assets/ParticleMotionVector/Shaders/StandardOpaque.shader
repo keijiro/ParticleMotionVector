@@ -39,4 +39,5 @@ Shader "Particles/Standard Opaque with Motion Vectors"
     }
 
     FallBack "Diffuse"
+    CustomEditor "ParticleMotionVector.StandardOpaqueGUI"
 }
