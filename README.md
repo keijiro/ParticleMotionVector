@@ -13,7 +13,8 @@ may not sound very useful for particle effects in a general sense, but useful
 in some specific cases, like when rendering many small moving objects
 (asteroids, confetti, etc.) with using a particle renderer.
 
-![screenshot](https://i.imgur.com/kVyOjuCm.png)
+![gif](https://i.imgur.com/2dSeftZ.gif)
+![movec](https://i.imgur.com/tFs7Rnjm.png)
 
 When using this shader, "Simulation Space" in the main module and "Render
 Alignment" in the renderer module should be set to "World". This is needed to
