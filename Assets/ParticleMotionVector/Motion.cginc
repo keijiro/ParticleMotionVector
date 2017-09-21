@@ -2,7 +2,6 @@
 
 float4x4 _NonJitteredVP;
 float4x4 _PreviousVP;
-float4x4 _PreviousM;
 
 struct Varyings
 {
@@ -13,19 +12,26 @@ struct Varyings
 
 float3 CalculatePreviousPosition(Attributes input)
 {
-    float3 vp = input.position.xyz;
     float dt = unity_DeltaTime.x;
-    float3 p1 = GetCenter(input);
-    float3 p0 = p1 - GetVelocity(input) * dt;
+
+    // Current rotation
     float3 r1 = GetRotation(input);
-    float3 r0 = r1 - GetRotationSpeed(input) * dt;
 
-    vp -= p1;
-    vp = mul(transpose(EulerToMatrix(r1)), vp);
-    vp = mul(EulerToMatrix(r0), vp);
-    vp += p0;
+    // Inverse current rotation matrix
+    float3x3 imr1 = transpose(Euler3x3(r1));
 
-    return vp;
+    // Previous rotation matrix
+    float3x3 mr0 = Euler3x3(r1 - GetRotationSpeed(input) * dt);
+
+    // Current center position
+    float3 p1 = GetCenter(input);
+
+    // Previous center position
+    float3 p0 = p1 - mul(imr1, GetVelocity(input)) * dt;
+
+    // Take back to the origin, apply the inverse rotation, then reapply the
+    // previous rotation and position.
+    return mul(mr0, mul(imr1, input.position.xyz - p1)) + p0;
 }
 
 Varyings Vertex(Attributes input)
@@ -35,8 +41,8 @@ Varyings Vertex(Attributes input)
 
     Varyings o;
     o.vertex = UnityObjectToClipPos(vp1);
-    o.transfer0 = mul(_PreviousVP, mul(_PreviousM, vp0));
-    o.transfer1 = mul(_NonJitteredVP, mul(unity_ObjectToWorld, vp1));
+    o.transfer0 = mul(_PreviousVP, vp0);
+    o.transfer1 = mul(_NonJitteredVP, vp1);
     return o;
 }
 
